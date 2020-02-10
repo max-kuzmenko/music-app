@@ -382,7 +382,7 @@ module.exports = function(webpackEnv) {
                       loaderMap: {
                         svg: {
                           ReactComponent:
-                            '@svgr/webpack?-svgo,+titleProp,+ref![path]',
+                            '@svgr/webpack?-svgo,+titleProp,+ref,+icon![path]',
                         },
                       },
                     },

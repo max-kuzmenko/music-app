@@ -1,11 +1,18 @@
 
 $color-dark: #303030;
 $color-base: #515151;
-$color-base: #787878;
+$color-light: #787878;
 
 $background-color: white;
-$background-accent: #dadada;
+$background-accent: #f9f9f9;
+
+$border-base: 1px solid #cacaca;
+
+$primary-color: tomato;
 
 $z-index-header: 100;
 $z-index-base: 10;
 $z-index-fixed-element: 20;
+
+$shadow-fixed-obj: 0px 0px 32px -22px rgba(0,0,0,1);
+$shadow-layout-obj: 0px 0px 14px -7px rgba(0,0,0,1);

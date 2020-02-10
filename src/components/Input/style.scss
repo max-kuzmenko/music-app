@@ -1,0 +1,56 @@
+@import "styles/variables";
+
+
+.Input {
+  outline: none;
+
+  border: $border-base;
+  border-radius: 5px;
+
+  background-color: $background-accent;
+  color: $color-base;
+  font-size: 16px;
+
+  padding: .6em 1em;
+
+  transition: .3s ease-in-out;
+
+  &::placeholder {
+    color: $color-light;
+  }
+  &:focus {
+    border-color: $primary-color;
+    box-shadow: 0px 0px 3px 0px $primary-color;
+  }
+}
+
+$input-icon-size: 2.5em;
+
+.Icon {
+  width: $input-icon-size;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 0;
+}
+
+.PrefixIcon ~ .Input {
+  padding-left: $input-icon-size;
+}
+
+.SuffixIcon ~ .Input {
+  padding-right: $input-icon-size;
+}
+
+.SuffixIcon {
+  right: 0;
+}
+
+.InputWrapper {
+  position: relative;
+  display: inline-block;
+}
