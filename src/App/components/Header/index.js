@@ -1,25 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Logo from 'components/Logo'
-import Input from 'components/Input'
+
+import SearchArtist from './containers/SearchArtist'
 
 import classes from './style.scss';
 
 
-const Header = () => {
-    const [value, setValue] = useState('');
-
-    return (
-        <header className={classes.Header}>
-            <Logo />
-            <Input
-                placeholder="Artist name..."
-                className={classes.SearchInput}
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-            />
-        </header>
-    );
-};
+const Header = () => (
+    <header className={classes.Header}>
+        <Logo />
+        <SearchArtist />
+    </header>
+);
 
 export default Header;
