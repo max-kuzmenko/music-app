@@ -1,0 +1,29 @@
+@import "styles/variables";
+
+.OptionsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin highlighted(){
+  background-color: $primary-color-lighten;
+  color: $primary-color;
+}
+
+.OptionsList .OptionsItem {
+  padding: $input-padding;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+
+  &:not(:first-child) {
+    border-top: $border-base;
+  }
+  &:hover {
+    @include highlighted();
+  }
+  &.Highlighted {
+    @include highlighted();
+  }
+}
+

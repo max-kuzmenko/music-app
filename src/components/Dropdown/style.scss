@@ -1,0 +1,14 @@
+@import 'styles/variables';
+
+
+.Overlay {
+  background-color: $background-color;
+  color: $color-base;
+
+  max-width: 100%;
+
+  box-shadow: $shadow-layout-obj;
+  z-index: $z-index-fixed-element;
+
+  border-radius: $border-radius;
+}

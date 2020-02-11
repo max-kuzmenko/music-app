@@ -6,6 +6,9 @@
   flex-wrap: nowrap;
   align-items: center;
 
+  font-size: 14px;
+  font-weight: bold;
+
   width: 100%;
 }
 
@@ -16,11 +19,19 @@
   text-overflow: ellipsis;
 }
 
-.ArtistPicture img {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  overflow: hidden;
+.ArtistPicture {
+  width: 30px;
+  height: 30px;
 
-  margin-right: 10px;
+  flex-basis: 40px;
+
+  text-align: center;
+  padding-right: 10px;
+
+
+  & img {
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+  }
 }

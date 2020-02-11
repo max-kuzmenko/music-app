@@ -6,7 +6,10 @@ import classes from './style.scss';
 const ArtistOption = ({ artist }) => (
     <div className={classes.ArtistOption}>
         <div className={classes.ArtistPicture}>
-            <img src={artist.picture} />
+            <img
+                alt={artist.name}
+                src={artist.picture_small}
+            />
         </div>
         <span className={classes.Ellipsis}>
             {artist.name}
