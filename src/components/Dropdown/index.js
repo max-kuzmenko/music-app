@@ -16,13 +16,15 @@ const Dropdown = ({ trigger, options, children, getPopupContainer }) => (
         trigger={[trigger]}
         overlayClassName={classes.Overlay}
         overlay={(
-            <Scrollbars
-                autoHeight
-                width="100%"
-                autoHeightMax="400px"
-            >
-                {options}
-            </Scrollbars>
+            <div>
+                <Scrollbars
+                    autoHeight
+                    width="100%"
+                    autoHeightMax="400px"
+                >
+                    {options}
+                </Scrollbars>
+            </div>
         )}
         getPopupContainer={getPopupContainer}
     >

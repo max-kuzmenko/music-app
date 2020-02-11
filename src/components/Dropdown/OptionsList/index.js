@@ -6,8 +6,9 @@ import classSet from 'classnames';
 import classes from './style.scss';
 
 
-const OptionsList = ({ children, className, ...ulProps }) => (
+const OptionsList = ({ innerRef, children, className, ...ulProps }) => (
     <ul
+        ref={innerRef}
         className={classSet({
             [className]: Boolean(className),
             [classes.OptionsList]: true,

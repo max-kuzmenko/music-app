@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Downshift from 'downshift'
+
 import Input from 'components/Input';
 import Dropdown, { Options } from 'components/Dropdown';
 
@@ -39,29 +41,51 @@ class AutoComplete extends React.Component {
         const { options, renderOption, inputProps } = this.props;
 
         return (
-            <div className={classes.AutoCompleteWrapper}>
-                <Dropdown
-                    options={(
-                        <Options>
-                            {options.map(option => (
-                                <Options.Item
-                                    key={option.id}
-                                    onClick={() => this.triggerSelect(option)}
+            <Downshift
+                onChange={this.triggerSelect}
+                itemToString={item => item && item.id}
+            >
+                {({
+                    getItemProps,
+                    getInputProps,
+                    getMenuProps,
+                    highlightedIndex,
+                }) => (
+                    <div className={classes.AutoCompleteWrapper}>
+                        <Dropdown
+                            options={(
+                                <Options
+                                    {...getMenuProps(
+                                        { refKey: 'innerRef' },
+                                        { suppressRefError: true }
+                                    )}
                                 >
-                                    {renderOption(option)}
-                                </Options.Item>
-                            ))}
-                        </Options>
-                    )}
-                    getPopupContainer={(node) => node.parentNode}
-                >
-                    <Input
-                        value={value}
-                        onChange={this.onChange}
-                        {...inputProps}
-                    />
-                </Dropdown>
-            </div>
+                                    {options.map((option, index) => (
+                                        <Options.Item
+                                            {...getItemProps({
+                                                isHighlighted: index === highlightedIndex,
+                                                key: option.id,
+                                                item: option,
+                                                index,
+                                            })}
+                                        >
+                                            {renderOption(option)}
+                                        </Options.Item>
+                                    ))}
+                                </Options>
+                            )}
+                            getPopupContainer={(node) => node.parentNode}
+                        >
+                            <Input
+                                {...getInputProps()}
+                                value={value}
+                                onChange={this.onChange}
+                                {...inputProps}
+                            />
+                        </Dropdown>
+                    </div>
+                )}
+            </Downshift>
         );
     }
 };
