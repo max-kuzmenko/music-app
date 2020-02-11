@@ -1,0 +1,37 @@
+@import "styles/variables";
+
+
+.ArtistOption {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  width: 100%;
+}
+
+.Ellipsis {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ArtistPicture {
+  width: 30px;
+  height: 30px;
+
+  flex-basis: 40px;
+
+  text-align: center;
+  padding-right: 10px;
+
+
+  & img {
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}

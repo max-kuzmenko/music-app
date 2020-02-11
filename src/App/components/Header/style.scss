@@ -1,0 +1,21 @@
+@import "styles/variables";
+
+
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  position: fixed;
+  z-index: $z-index-fixed-element;
+  top: 0;
+
+  background-color: $background-color;
+  box-shadow: $shadow-fixed-obj;
+
+  color: $primary-color;
+
+  padding: 20px 80px;
+}

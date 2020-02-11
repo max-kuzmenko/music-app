@@ -1,0 +1,14 @@
+@import "styles/variables";
+
+.Logo {
+  display: inline-flex;
+  align-items: center;
+
+  font-size: 24px;
+}
+
+.LogoText {
+  margin-left: 5px;
+
+  font-weight: bold;
+}
