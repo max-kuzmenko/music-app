@@ -31,6 +31,7 @@ class Audio extends React.Component {
 
     setPlayingState() {
         const audio = this.audioRef.current;
+        if(!audio) return;
         if(this.props.isPlaying) {
             audio.play().catch(this.waitForUserInteration);
         } else {
