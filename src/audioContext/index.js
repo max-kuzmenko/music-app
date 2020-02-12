@@ -6,13 +6,14 @@ import { connect } from 'react-redux';
 import { getIsPlaying, getPlayingFromPercent, getCurrentTrackId } from 'store/audioState/selectors';
 import { getTracksById } from 'store/tracks/selectors';
 
-import { nextTrackAction } from 'store/audioState/actions';
+import { nextTrackAction, setPlayingFromPercentAction } from 'store/audioState/actions';
 
 import Audio from './Audio';
 
 
 const AudioContext = React.createContext({
     currentTime: 0,
+    playingPercent: 0,
     nativeDuration: 0,
 });
 
@@ -22,14 +23,17 @@ class AudioProvider extends React.Component {
         this.state = {
             nativeDuration: 0,
             currentTime: 0,
+            playingPercent: 0,
             currentSrc: null,
         }
 
         this.changeCurrentTime = this.changeCurrentTime.bind(this);
+        this.savePlayingFrom = this.savePlayingFrom.bind(this);
     }
 
     componentDidMount() {
         this.findTrackSrc();
+        this.addBeforeUnloadListener();
     }
 
     componentDidUpdate(prevProps) {
@@ -44,16 +48,28 @@ class AudioProvider extends React.Component {
         this.setState({ currentSrc: currentTrack && currentTrack.preview })
     }
 
-    changeCurrentTime({ currentTime, duration }) {
+    addBeforeUnloadListener() {
+        window.onbeforeunload = () => this.savePlayingFrom();
+    }
+
+    savePlayingFrom() {
+        const { setPlayingFromPercent } = this.props;
+        const { playingPercent } = this.state;
+
+        setPlayingFromPercent(playingPercent);
+    }
+
+    changeCurrentTime({ currentTime, duration, percent }) {
         this.setState({
             nativeDuration: duration,
+            playingPercent: percent,
             currentTime,
         })
     }
 
     render() {
         const { isPlaying, playingFromPercent, playNextTrack, children } = this.props;
-        const { currentSrc, nativeDuration, currentTime } = this.state;
+        const { currentSrc, nativeDuration, currentTime, playingPercent } = this.state;
 
         return (
             <React.Fragment>
@@ -68,7 +84,7 @@ class AudioProvider extends React.Component {
                     />
                 ) : null}
                 <AudioContext.Provider
-                    value={{ nativeDuration, currentTime }}
+                    value={{ nativeDuration, currentTime, playingPercent }}
                 >
                     {children}
                 </AudioContext.Provider>
@@ -79,10 +95,11 @@ class AudioProvider extends React.Component {
 
 AudioContext.propTypes = {
     isPlaying: PropTypes.bool.isRequired,
-    playingFrom: PropTypes.number.isRequired,
+    playingFromPercent: PropTypes.number.isRequired,
     currentTrackId: PropTypes.string.isRequired,
     tracksById: PropTypes.object.isRequired,
     playNextTrack: PropTypes.func.isRequired,
+    setPlayingFromPercent: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
 };
 
@@ -95,6 +112,7 @@ const mapStateToProps = state => ({
 
 const ConnectedAudioProvider = connect(mapStateToProps, {
     playNextTrack: nextTrackAction,
+    setPlayingFromPercent: setPlayingFromPercentAction,
 })(AudioProvider);
 
 export { ConnectedAudioProvider as AudioProvider };

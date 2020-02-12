@@ -1,4 +1,25 @@
 
+const STORE_KEY = 'app_state';
+
+export const restoreState = () => {
+    try {
+        const restoredStateJSON = localStorage.getItem(STORE_KEY);
+        if(restoredStateJSON === null) return undefined;
+        return JSON.parse(restoredStateJSON);
+    } catch (e) {
+        return undefined;
+    }
+}
+
+export const saveState = (state) => {
+    try {
+        const stateJSON = JSON.stringify(state);
+        localStorage.setItem(STORE_KEY, stateJSON);
+    } catch (e) {
+        console.error(e);
+    }
+}
+
 export const createReducer = (reduceObj, initialState) => {
     return (state = initialState, action) => {
         const actionHandler = reduceObj[action.type];
