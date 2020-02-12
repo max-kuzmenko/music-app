@@ -1,0 +1,68 @@
+@import "styles/variables";
+
+@mixin highlighted(){
+  background-color: $primary-color-lighten;
+  .Icon, .Title, .TrackDuration {
+    color: $primary-color;
+  }
+}
+
+.Track {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+
+  &, .Icon, .Title, .TrackDuration, .TrackIndex, .PlayButton {
+    transition: .3s ease-in-out;
+  }
+
+  .Icon {
+    width: 50px;
+    text-align: left;
+
+    font-size: 14px;
+    color: $color-light;
+  }
+  .Title {
+    width: 100%;
+    display: inline-block;
+
+    color: $color-base;
+    font-weight: bold;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .TrackDuration {
+    width: 50px;
+    text-align: right;
+
+    font-size: 14px;
+    color: $color-light;
+  }
+
+  .PlayButton {
+    color: $primary-color;
+    opacity: 0;
+  }
+  .TrackIndex {
+    position: absolute;
+    opacity: 1;
+  }
+
+  &.Highlighted {
+    @include highlighted();
+  }
+
+  &:hover {
+    @include highlighted();
+
+    .PlayButton {
+      opacity: 1;
+    }
+    .TrackIndex {
+      opacity: 0;
+    }
+  }
+}
