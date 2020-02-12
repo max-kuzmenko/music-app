@@ -1,0 +1,7 @@
+
+export const SET_UP_NEXT_TRACKS = 'SET_UP_NEXT_TRACKS';
+export const SET_IS_PALYING = 'SET_IS_PLAYING';
+export const SET_PLAYING_FROM = 'CHANGE_PLAYING_FROM';
+
+export const PLAY_TRACK = 'PLAY_TRACK';
+export const NEXT_TRACK = 'NEXT_TRACK';
