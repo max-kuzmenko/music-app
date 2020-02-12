@@ -1,0 +1,27 @@
+@import "styles/variables";
+
+
+.EmptyMessage {
+  color: $color-light;
+  text-align: right;
+}
+
+.TracksList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: $color-base;
+  border: $border-base;
+  overflow: hidden;
+  border-radius: 5px;
+
+  .Item {
+    font-size: 16px;
+
+    cursor: pointer;
+
+    &:not(:first-child) {
+      border-top: $border-base;
+    }
+  }
+}
