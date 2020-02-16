@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Loader from "react-loader-spinner";
+import { IoIosPlay } from "react-icons/io";
 
 import classSet from 'classnames';
 
 import formatSeconds from 'utils/formatSeconds';
 
-import { ReactComponent as PlayIcon } from './play.svg';
 import classes from './style.scss';
 
 
@@ -27,14 +27,14 @@ const Track = ({ trackIndex, track, isPlaying }) => (
                     height={14}
                 />
             ) : (
-                <span>
+                <div className={classes.Switch}>
                     <span className={classes.TrackIndex}>
                         {trackIndex}
                     </span>
                     <span className={classes.PlayButton}>
-                        <PlayIcon fill="currentColor" />
+                        <IoIosPlay color="currentColor" />
                     </span>
-                </span>
+                </div>
             )}
         </div>
         <div className={classes.Title}>

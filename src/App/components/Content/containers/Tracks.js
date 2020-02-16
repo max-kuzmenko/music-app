@@ -7,7 +7,7 @@ import { getTracksByArtistId } from 'store/tracks/selectors';
 import { getSearchedArtistId } from 'store/artists/selectors';
 import { getCurrentTrackId } from 'store/audioState/selectors';
 
-import { setUpNextTracksAction, playTrackAction } from 'store/audioState/actions';
+import { setPlaylistAction, playPlaylistTrackAction } from 'store/audioState/actions';
 
 import TracksList from '../components/TracksList';
 
@@ -19,15 +19,21 @@ class Tracks extends React.Component {
     }
 
     onTrackSelect(trackIndex) {
-        const { searchedArtistId, tracksByArtistId, currentTrackId, playTrack, setUpNext } = this.props;
+        const {
+            searchedArtistId,
+            tracksByArtistId,
+            currentTrackId,
+            playTrackFromPlaylist,
+            setPlaylist
+        } = this.props;
 
         const trackIds = (tracksByArtistId[searchedArtistId] || []).map(({ id }) => id);
         const newTrackId = trackIds[trackIndex];
 
         if(!newTrackId || newTrackId === currentTrackId) return;
 
-        setUpNext(trackIds.slice(trackIndex + 1));
-        playTrack(newTrackId);
+        setPlaylist(trackIds);
+        playTrackFromPlaylist(trackIndex);
     }
 
     render() {
@@ -47,8 +53,8 @@ Tracks.propTypes = {
     currentTrackId: PropTypes.number,
     searchedArtistId: PropTypes.number,
     tracksByArtistId: PropTypes.object.isRequired,
-    setUpNext: PropTypes.func.isRequired,
-    playTrack: PropTypes.func.isRequired,
+    setPlaylist: PropTypes.func.isRequired,
+    playTrackFromPlaylist: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -58,8 +64,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatch = {
-    setUpNext: setUpNextTracksAction,
-    playTrack: playTrackAction,
+    setPlaylist: setPlaylistAction,
+    playTrackFromPlaylist: playPlaylistTrackAction,
 };
 
 export default connect(mapStateToProps, mapDispatch)(Tracks);

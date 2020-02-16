@@ -28,12 +28,14 @@ class AutoComplete extends React.Component {
     triggerSelect(option) {
         this.props.onSelect(option.id, option);
         this.setState({ isFocused: false, value: '' });
+        this.props.onChange('');
     }
 
     onChange(e) {
         const value = e.target.value;
         this.setState({ value });
         this.debouncedTriggerSearch(value);
+        this.props.onChange(value);
     }
 
     render() {
@@ -94,6 +96,7 @@ AutoComplete.propTypes = {
     options: PropTypes.array.isRequired,
     inputProps: PropTypes.object.isRequired,
     onSearch: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
     onSelect: PropTypes.func.isRequired,
     renderOption: PropTypes.func,
 };

@@ -1,4 +1,4 @@
-import { createReducer, keyBy } from 'store/utils';
+import { createReducer, keyBy, uniq } from 'store/utils';
 
 import * as types from './actionTypes';
 
@@ -23,7 +23,7 @@ const reduceObj = {
         },
         trackIdsByArtistId: {
             ...state.trackIdsByArtistId,
-            [artistId]: tracks.map(({ id }) => id).concat(state.trackIdsByArtistId[artistId] || []),
+            [artistId]: uniq(tracks.map(({ id }) => id).concat(state.trackIdsByArtistId[artistId] || [])),
         },
         byId: {
             ...state.byId,

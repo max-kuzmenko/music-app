@@ -1,0 +1,30 @@
+@import "styles/variables";
+
+
+.ControlsWrapper {
+  display: inline-flex;
+  align-items: center;
+
+  color: $color-base;
+
+  font-size: 22px;
+
+  & > * {
+    transition: .3s ease-in-out;
+    margin-right: 20px;
+    cursor: pointer;
+
+    min-height: 40px;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .ControlsWrapper {
+    justify-content: center;
+    font-size: 30px;
+  }
+}

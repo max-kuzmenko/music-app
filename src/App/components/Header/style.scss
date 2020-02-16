@@ -19,3 +19,16 @@
 
   padding: 20px 80px;
 }
+
+@media (max-width: 800px) {
+  .Header {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 470px) {
+  .Logo {
+    display: none;
+  }
+}
+

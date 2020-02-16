@@ -35,6 +35,13 @@ export const keyBy = (arr, prop) => {
     }, {});
 }
 
+export const uniq = arr => {
+    return arr.reduce((result, item) => {
+        if(result.includes(item)) return result;
+        return result.concat(item)
+    }, []);
+}
+
 export const createAction = (type, payload) => ({
     type,
     payload,

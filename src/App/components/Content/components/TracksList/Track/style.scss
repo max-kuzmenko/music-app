@@ -44,10 +44,20 @@
 
   .PlayButton {
     color: $primary-color;
+    font-size: 20px;
     opacity: 0;
   }
+
+  .Switch {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+  }
+
   .TrackIndex {
     position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     opacity: 1;
   }
 

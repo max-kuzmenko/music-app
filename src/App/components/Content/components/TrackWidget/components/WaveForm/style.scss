@@ -1,0 +1,21 @@
+@import "styles/variables";
+
+.WaveFrom {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  color: $primary-color;
+  padding-right: 20px;
+  padding-bottom: 20px;
+
+  canvas {
+    height: 80px;
+  }
+}
+
+@media (max-width: 470px) {
+  .WaveFrom {
+    position: relative;
+    padding-left: 20px;
+  }
+}
