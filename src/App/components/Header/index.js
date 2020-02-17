@@ -9,7 +9,9 @@ import classes from './style.scss';
 
 const Header = () => (
     <header className={classes.Header}>
-        <Logo />
+        <div className={classes.Logo}>
+            <Logo />
+        </div>
         <SearchArtist />
     </header>
 );

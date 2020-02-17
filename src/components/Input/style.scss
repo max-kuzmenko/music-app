@@ -4,6 +4,8 @@
 .Input {
   outline: none;
 
+  width: 100%;
+
   border: $border-base;
   border-radius: 5px;
 
@@ -53,4 +55,5 @@ $input-icon-size: 2.5em;
 .InputWrapper {
   position: relative;
   display: inline-block;
+  width: 100%;
 }

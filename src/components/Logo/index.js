@@ -9,7 +9,7 @@ const Logo = () => (
     <div className={classes.Logo}>
         <MusicIcon fill="currentColor" />
         <span className={classes.LogoText}>
-            Music
+            Logo
         </span>
     </div>
 );

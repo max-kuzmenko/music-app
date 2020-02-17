@@ -1,7 +1,9 @@
 
-export const SET_UP_NEXT_TRACKS = 'SET_UP_NEXT_TRACKS';
+export const SET_PLAYLIST = 'SET_PLAYLIST';
 export const SET_IS_PALYING = 'SET_IS_PLAYING';
+export const SET_VOLUME_LEVEL = 'SET_VOLUME_LEVEL';
 export const SET_PLAYING_FROM = 'CHANGE_PLAYING_FROM';
 
-export const PLAY_TRACK = 'PLAY_TRACK';
+export const PLAY_PLAYLIST_TRACK = 'PLAY_PLAYLIST_TRACK';
 export const NEXT_TRACK = 'NEXT_TRACK';
+export const PREV_TRACK = 'PREV_TRACK';

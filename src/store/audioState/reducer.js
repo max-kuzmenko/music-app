@@ -5,31 +5,43 @@ import * as types from './actionTypes';
 
 const initialState = {
     isPlaying: false,
-    currentTrackId: null,
-    playingFromPercent: 0,
-    upNextTracks: [],
+    currentTime: 0,
+    volumeLevel: 50,
+    currentTrackIndex: 0,
+    playlist: [],
 };
 
 const reduceObj = {
     [types.SET_IS_PALYING]: (state, isPlaying) => ({ isPlaying }),
-    [types.SET_UP_NEXT_TRACKS]: (state, upNextTracks) => ({ upNextTracks }),
-    [types.SET_PLAYING_FROM]: (state, playingFromPercent) => ({ playingFromPercent }),
+    [types.SET_PLAYLIST]: (state, playlist) => ({ playlist }),
+    [types.SET_VOLUME_LEVEL]: (state, volumeLevel) => ({ volumeLevel }),
+    [types.SET_PLAYING_FROM]: (state, currentTime) => ({ currentTime }),
 
-    [types.PLAY_TRACK]: (state, trackId) => ({
-        currentTrackId: trackId,
+    [types.PLAY_PLAYLIST_TRACK]: (state, currentTrackIndex) => ({
+        currentTrackIndex,
         isPlaying: true,
-        playingFromPercent: 0
+        currentTime: 0
     }),
     [types.NEXT_TRACK]: (state) => {
-        const currentTrackId = state.upNextTracks[0];
-        if(!currentTrackId) return { isPlaying: false };
+        const nextTrackIndex = state.currentTrackIndex + 1;
 
-        const upNextTracks = state.upNextTracks.slice(1);
+        if(nextTrackIndex > state.playlist.length - 1) {
+            return { isPlaying: false };
+        }
 
         return {
-            currentTrackId,
-            upNextTracks,
-            playingFromPercent: 0,
+            currentTrackIndex: nextTrackIndex,
+            currentTime: 0,
+        };
+    },
+    [types.PREV_TRACK]: (state) => {
+        const nextTrackIndex = state.currentTrackIndex - 1;
+
+        if(nextTrackIndex < 0) return null;
+
+        return {
+            currentTrackIndex: nextTrackIndex,
+            currentTime: 0,
         };
     }
 };

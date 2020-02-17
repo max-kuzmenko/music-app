@@ -1,0 +1,12 @@
+@import "styles/variables";
+
+
+.Slider {
+  :global(.rc-slider-handle) {
+    border-color: white;
+    background-color: $primary-color;
+  }
+  :global(.rc-slider-track) {
+    background-color: $primary-color-secondary;
+  }
+}

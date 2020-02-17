@@ -17,4 +17,4 @@ export const getTracksByArtistId = createSelector(
             return result
         }, {});
     }
-)
+);

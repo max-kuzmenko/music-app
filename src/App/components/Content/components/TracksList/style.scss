@@ -1,5 +1,11 @@
 @import "styles/variables";
 
+.TracksListWrapper {
+  color: $color-base;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: $shadow-layout-obj;
+}
 
 .EmptyMessage {
   color: $color-light;
@@ -10,10 +16,6 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  color: $color-base;
-  border: $border-base;
-  overflow: hidden;
-  border-radius: 5px;
 
   .Item {
     font-size: 16px;

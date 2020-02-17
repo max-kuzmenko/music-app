@@ -1,7 +1,17 @@
 @import "styles/variables";
 
 
-.SearchInput {
-  color: $color-base;
+.ArtistsSearch {
   width: 300px;
+  color: $color-base;
+}
+
+.SearchInput {
+  border-radius: 20px;
+}
+
+@media (max-width: 470px) {
+  .ArtistsSearch {
+    width: 100%;
+  }
 }

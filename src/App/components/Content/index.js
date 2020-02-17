@@ -5,6 +5,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import classes from './style.scss';
 
 import Tracks from './containers/Tracks';
+import TrackWidget from './components/TrackWidget';
 
 const Content = () => (
     <content className={classes.ContentWrapper}>
@@ -14,6 +15,7 @@ const Content = () => (
         >
             <div className={classes.Content}>
                 <div className={classes.AudioContainer}>
+                    <TrackWidget />
                 </div>
                 <div className={classes.ListContainer}>
                     <Tracks />

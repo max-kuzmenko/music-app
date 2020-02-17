@@ -3,6 +3,8 @@ import { all } from 'redux-saga/effects';
 
 import createSagaMiddleware from 'redux-saga';
 
+import { saveState, restoreState } from 'store/utils';
+
 import tracksReducer from './tracks/reducer';
 import audioStateReducer from './audioState/reducer';
 import artistsReducer from './artists/reducer';
@@ -17,11 +19,15 @@ const reducer = combineReducers({
 })
 
 const sagaMiddleware = createSagaMiddleware();
+const restoredState = restoreState();
 
 const store = createStore(
     reducer,
-    applyMiddleware(sagaMiddleware)
+    restoredState,
+    applyMiddleware(sagaMiddleware),
 );
+
+store.subscribe(() => saveState(store.getState()));
 
 function* rootSaga() {
     yield all([

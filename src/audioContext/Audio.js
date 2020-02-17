@@ -53,7 +53,7 @@ class Audio extends React.Component {
 
     setCurrentTime() {
         const audio = this.audioRef.current;
-        audio.currentTime = (audio.duration / 100) * this.props.playFromPercent;
+        audio.currentTime = this.props.playFrom;
     }
 
     canPlayHandler() {
@@ -72,6 +72,13 @@ class Audio extends React.Component {
         });
     }
 
+    setVolume() {
+        const audio = this.audioRef.current;
+        const { volumeLevel } = this.props;
+
+        audio.volume = volumeLevel / 100;
+    }
+
     onCanPlayThrough() {
         if(!this.timeLoaded) this.setCurrentTime();
         this.timeLoaded = true;
@@ -84,7 +91,7 @@ class Audio extends React.Component {
 
     controlAudio(prevProps) {
         const { canPlay } = this.state;
-        const { isPlaying, playFromPercent } = this.props;
+        const { isPlaying, playFrom, volumeLevel } = this.props;
         if(!canPlay) return;
 
         const skipPropsCompare = !prevProps;
@@ -93,8 +100,12 @@ class Audio extends React.Component {
             this.setPlayingState();
         }
 
-        if(skipPropsCompare || playFromPercent !== prevProps.playFromPercent) {
+        if(skipPropsCompare || playFrom !== prevProps.playFrom) {
             this.setCurrentTime();
+        }
+
+        if(skipPropsCompare || volumeLevel !== prevProps.volumeLevel) {
+            this.setVolume();
         }
     }
 
@@ -119,7 +130,8 @@ class Audio extends React.Component {
 }
 
 Audio.propTypes = {
-    playFromPercent: PropTypes.number,
+    playFrom: PropTypes.number, // seconds
+    volumeLevel: PropTypes.number, // %
     isPlaying: PropTypes.bool.isRequired,
     src: PropTypes.string.isRequired,
     onLoadingChange: PropTypes.func,
@@ -128,7 +140,8 @@ Audio.propTypes = {
 };
 
 Audio.defaultProps = {
-    playFromPercent: 0,
+    playFrom: 0,
+    volumeLevel: 50,
     onLoadingChange: () => {},
 };
 

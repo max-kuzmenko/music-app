@@ -1,0 +1,68 @@
+@import "styles/variables";
+
+
+.TrackWidget {
+  width: 100%;
+  border-radius: $border-radius;
+  box-shadow: $shadow-layout-obj;
+}
+
+.UpperWidget {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
+.ProgressWrapper {
+  width: 100%;
+  position: relative;
+}
+
+.Gradient {
+  background: $primary-color;
+  background: linear-gradient(90deg, $primary-color 0%, $primary-color-secondary 100%);
+  width: 100%;
+  height: 7px;
+}
+
+.Controls {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+$cover-size: 180px;
+
+.CoverWrapper {
+  padding: 20px;
+  width: $cover-size;
+  min-width: $cover-size;
+  height: $cover-size;
+  min-height: $cover-size;
+
+  & img {
+    border-radius: $border-radius;
+    overflow: hidden;
+    box-shadow: $shadow-layout-obj;
+  }
+}
+
+@media (max-width: 800px) {
+  .Controls {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+  }
+}
+
+@media (max-width: 470px) {
+  .CoverWrapper {
+    width: 100%;
+    height: auto;
+  }
+  .UpperWidget {
+    flex-direction: column;
+    padding-left: 0;
+  }
+}

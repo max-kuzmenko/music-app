@@ -9,8 +9,9 @@ $background-accent: #fcfcfc;
 $border-base: 1px solid #e4e4e4;
 $border-radius: 5px;
 
-$primary-color: tomato;
-$primary-color-lighten: #fff3f1;
+$primary-color: rgb(12, 141, 215);
+$primary-color-secondary: #58b7d7;
+$primary-color-lighten: #dff8ff;
 
 $z-index-header: 100;
 $z-index-base: 10;
@@ -19,4 +20,4 @@ $z-index-fixed-element: 20;
 $input-padding: .6em 1em;
 
 $shadow-fixed-obj: 0px 0px 32px -22px rgba(0,0,0,1);
-$shadow-layout-obj: 0px 0px 7px -4px black;
+$shadow-layout-obj: 0 3px 6px rgba(0, 0, 0, 0.09), 0 3px 6px rgba(0, 0, 0, 0.11);
